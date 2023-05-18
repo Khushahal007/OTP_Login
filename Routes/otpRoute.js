@@ -1,3 +1,4 @@
+
 const express = require('express');
 const otpGenerator = require('otp-generator');
 const nodemailer = require('nodemailer');
@@ -10,12 +11,12 @@ const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-        user: 'paul90@ethereal.email',
-        pass: 'mwVvfxE4YxD3QKGfvn',
-    },
+        user: 'gabe.schaden@ethereal.email',
+        pass: 'yD9GdcgYcT6cRns7uG'
+    }
 });
 
-router.post('/', async (req, res) => {
+router.post('/otp', async (req, res) => {
     const { email } = req.body;
 
     try {
@@ -52,7 +53,7 @@ router.post('/', async (req, res) => {
 
         // Send OTP to the user's email
         await transporter.sendMail({
-            from: 'paul90@ethereal.email',
+            from: 'gabe.schaden@ethereal.email',
             to: email,
             subject: 'OTP Verification',
             text: `Your OTP is: ${otp}`,
